@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -360,7 +361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3b787b5902b98c4aa5e82f34a0267fe, type: 3}
   m_Name: 
@@ -369,6 +370,22 @@ MonoBehaviour:
   isTesting: 1
   isFollowing: 1
   offset: {x: 0, y: 4, z: -10}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fb8bd53ae812e4e8ee82b3e7b0ff0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ball: {fileID: 1215276682}
+  offset: {x: 0, y: 4, z: -6}
+  CameraVerticalRotation: 25
+  MaximumHorizontalCameraRange: 5
 --- !u!1 &1215276682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1876405448786351526, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
