@@ -385,7 +385,7 @@ MonoBehaviour:
   Ball: {fileID: 1215276682}
   offset: {x: 0, y: 4, z: -6}
   CameraVerticalRotation: 25
-  MaximumHorizontalCameraRange: 5
+  MaximumHorizontalCameraRange: 6
 --- !u!1 &1215276682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1876405448786351526, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
