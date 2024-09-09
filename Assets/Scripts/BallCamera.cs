@@ -19,7 +19,8 @@ public class BallCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float yPos = Ball.transform.position.y;
+        //float yPos = Ball.transform.position.y;
+        float yPos = 0;
         float zPos = Ball.transform.position.z;
         float xPos = Ball.transform.position.x / 2f;
 
