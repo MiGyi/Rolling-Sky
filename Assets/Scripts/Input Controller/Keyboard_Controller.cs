@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Keyboard_Controller : MonoBehaviour
+public class KeyboardController : MonoBehaviour
 {
+
+    public bool inGame = false;
+    private bool controlMouse = false; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,24 @@ public class Keyboard_Controller : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.P) )
         {
             Debug.Log("P is pressed");
+        }
+
+        if( controlMouse )
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            controlMouse = false;
+        }
+
+        if (!inGame && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space is pressed");
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
+            inGame = true;
+            controlMouse = true;
         }
     }
 }
