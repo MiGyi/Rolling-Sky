@@ -60,8 +60,8 @@ public class MapGenerator : MonoBehaviour
     // Generate a row of platforms in the three lanes
     private void GenerateRowOfPlatforms()
     {
-        // Loop through the 3 lanes (left, center, right)
-        for (int lane = -1; lane <= 1; lane++)
+        // Loop through the 11 lanes (left, center, right)
+        for (int lane = -5; lane <= 5; lane++)
         {
             // Calculate lane position by adjusting X based on the lane
             Vector3 lanePosition = spawnPosition + new Vector3(lane * laneSpacing, 0, 0);
