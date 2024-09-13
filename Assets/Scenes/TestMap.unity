@@ -314,8 +314,8 @@ MonoBehaviour:
   player: {fileID: 1215276688}
   platformLength: 2
   laneSpacing: 2
-  platformsPerChunk: 55
-  generationDistanceAhead: 100
+  platformsPerChunk: 5
+  generationDistanceAhead: 10
   maxDistanceBehind: 10
 --- !u!4 &957372608
 Transform:

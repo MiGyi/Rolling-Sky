@@ -33,6 +33,12 @@ public class MapGenerator : MonoBehaviour
         {
             GenerateChunk();
             GenerateObstacle();
+
+            GenerateChunk();
+            GenerateObstacle();
+
+            GenerateChunk();
+            GenerateObstacle();
         }
 
         RemoveOldPlatforms();
@@ -57,15 +63,33 @@ public class MapGenerator : MonoBehaviour
     private void GenerateObstacle()
     {
         float lane = Random.Range(-3, 4) * laneSpacing;
-        float distance = Random.Range(2, 4) * laneSpacing;
+        float distance = Random.Range(-2, -4) * laneSpacing;
+        float distance2 = Random.Range(2, 4) * laneSpacing;
+        
         Vector3 lanePosition = new Vector3(lane, 1, lastGeneratedZ);
         Vector3 lanePosition2 = new Vector3(lane + distance, 1, lastGeneratedZ);
+        Vector3 lanePosition3 = new Vector3(lane + distance2, 1, lastGeneratedZ);
+
         GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         GameObject obstaclePrefab2 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstaclePrefab3 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        
         GameObject obstacle = Instantiate(obstaclePrefab, lanePosition, Quaternion.identity);
         GameObject obstacle2 = Instantiate(obstaclePrefab2, lanePosition2, Quaternion.identity);
+        GameObject obstacle3 = Instantiate(obstaclePrefab3, lanePosition3, Quaternion.identity);
+        
         ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
         obstacleMovement.InitialPosition = lanePosition;
+
+        ObstacleMovement obstacleMovement2 = obstacle2.GetComponent<ObstacleMovement>();
+        obstacleMovement2.InitialPosition = lanePosition2;
+
+        ObstacleMovement obstacleMovement3 = obstacle3.GetComponent<ObstacleMovement>();
+        obstacleMovement3.InitialPosition = lanePosition3;
+
+        activeObstacles.Add(obstacle);
+        activeObstacles.Add(obstacle2);
+        activeObstacles.Add(obstacle3);
     }
 
     private void GenerateRowOfPlatforms()
