@@ -6,9 +6,15 @@ using UnityEngine.UIElements;
 public class Ball : MonoBehaviour
 {
     public Rigidbody rb;
+    
+    // Header for the serialized fields
+    [Header("Ball Movement")]
     [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float jumpingForce = 5.0f;
     [SerializeField] private float deltaSpeed = 0.05f;
+    [SerializeField] private float jumpingForce = 5.0f;
+
+    [Header("Threshold")]
+    [SerializeField] private float threshold = 0.5f;
 
     private bool isPlayable = false;
 
@@ -60,7 +66,7 @@ public class Ball : MonoBehaviour
 
     void FixedUpdate()
     {
-        if( transform.position.y < 0.3f )
+        if( transform.position.y < threshold )
         {
             isPlayable = false;
         }

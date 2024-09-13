@@ -6,9 +6,9 @@ using UnityEngine;
 public class BallCamera : MonoBehaviour
 {
     public GameObject Ball;
-    public Vector3 offset = new Vector3(0, 4, -6);
+    public Vector3 offset = new Vector3(0, 8, -10);
     public float CameraVerticalRotation = 30;
-    public float MaximumHorizontalCameraRange = 5;
+    public float MaximumHorizontalCameraRange = 6;
 
     // Start is called before the first frame update
     void Start()
