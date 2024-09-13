@@ -31,17 +31,11 @@ public class MapGenerator : MonoBehaviour
     {
         if (player.position.z + generationDistanceAhead > lastGeneratedZ)
         {
-            GenerateChunk();
-            GenerateObstacle();
-
-            GenerateChunk();
-            GenerateObstacle();
-
-            GenerateChunk();
-            GenerateObstacle();
-
-            GenerateChunk();
-            GenerateObstacle();
+            for (int i = 0; i < 4; i++)
+            {
+                GenerateChunk();
+                GenerateObstacle();
+            }
         }
 
         RemoveOldPlatforms();
@@ -66,33 +60,19 @@ public class MapGenerator : MonoBehaviour
     private void GenerateObstacle()
     {
         float lane = Random.Range(-3, 4) * laneSpacing;
-        float distance = Random.Range(-2, -4) * laneSpacing;
-        float distance2 = Random.Range(2, 4) * laneSpacing;
-        
-        Vector3 lanePosition = new Vector3(lane, 0.5f, lastGeneratedZ);
-        Vector3 lanePosition2 = new Vector3(lane + distance, 0.5f, lastGeneratedZ);
-        Vector3 lanePosition3 = new Vector3(lane + distance2, 0.5f, lastGeneratedZ);
+        float[] distances = { Random.Range(-4, -2) * laneSpacing, 0, Random.Range(2, 4) * laneSpacing };
 
-        GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-        GameObject obstaclePrefab2 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-        GameObject obstaclePrefab3 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-        
-        GameObject obstacle = Instantiate(obstaclePrefab, lanePosition, Quaternion.identity);
-        GameObject obstacle2 = Instantiate(obstaclePrefab2, lanePosition2, Quaternion.identity);
-        GameObject obstacle3 = Instantiate(obstaclePrefab3, lanePosition3, Quaternion.identity);
-        
-        ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
-        obstacleMovement.InitialPosition = lanePosition;
+        for (int i = 0; i < distances.Length; i++)
+        {
+            Vector3 lanePosition = new Vector3(lane + distances[i], 0.5f, lastGeneratedZ);
+            GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+            GameObject obstacle = Instantiate(obstaclePrefab, lanePosition, Quaternion.identity);
 
-        ObstacleMovement obstacleMovement2 = obstacle2.GetComponent<ObstacleMovement>();
-        obstacleMovement2.InitialPosition = lanePosition2;
+            ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
+            obstacleMovement.InitialPosition = lanePosition;
 
-        ObstacleMovement obstacleMovement3 = obstacle3.GetComponent<ObstacleMovement>();
-        obstacleMovement3.InitialPosition = lanePosition3;
-
-        activeObstacles.Add(obstacle);
-        activeObstacles.Add(obstacle2);
-        activeObstacles.Add(obstacle3);
+            activeObstacles.Add(obstacle);
+        }
     }
 
     private void GenerateRowOfPlatforms()
