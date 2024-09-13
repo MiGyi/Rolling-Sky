@@ -291,11 +291,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 7871186920936463004, guid: 7c05f8d9a31031145b4687ef16209458, type: 3}
+  obstaclePrefabs:
+  - {fileID: 1654875623042400083, guid: e3345b7687454d34a89f4a8b274ce6d8, type: 3}
+  - {fileID: 1719925528288471760, guid: 48bbe2117ca62c64dadf29cdecf836e2, type: 3}
+  - {fileID: 414824002453263464, guid: 2b857713f3e59704ebe046ce29f83889, type: 3}
+  - {fileID: 9015470302665427816, guid: 84e0c4f028099c54a8e99198503f1fe2, type: 3}
   player: {fileID: 1215276688}
   platformLength: 2
   laneSpacing: 2
   platformsPerChunk: 20
-  generationDistanceAhead: 50
+  generationDistanceAhead: 20
   maxDistanceBehind: 10
 --- !u!4 &957372608
 Transform:

@@ -5,8 +5,9 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [Header("References")]
-    public GameObject platformPrefab;  // Reference to the platform prefab
-    public Transform player;           // Reference to the player's transform (the ball)
+    public GameObject platformPrefab;
+    public GameObject[] obstaclePrefabs;
+    public Transform player;
 
     [Header("Map Settings")]
     public float platformLength = 5.0f;  // Length of each platform
@@ -17,29 +18,26 @@ public class MapGenerator : MonoBehaviour
 
     private Vector3 spawnPosition = Vector3.zero;  // Position where the next chunk of platforms will spawn
     private List<GameObject> activePlatforms = new List<GameObject>();  // Keep track of active platforms
+    private List<GameObject> activeObstacles = new List<GameObject>();  // Keep track of active obstacles
     private float lastGeneratedZ = 0;  // The Z-position of the last generated platform
 
-    // Start is called before the first frame update
     private void Start()
     {
-        spawnPosition = Vector3.zero;  // Initialize spawn position at the start
-        GenerateInitialPlatforms();    // Generate the initial platforms at the start
+        spawnPosition = Vector3.zero;
+        GenerateInitialPlatforms();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        // Check if the player is getting close to the last generated platform
         if (player.position.z + generationDistanceAhead > lastGeneratedZ)
         {
-            GenerateChunk();  // Generate a new chunk of platforms
+            GenerateChunk();
+            GenerateObstacle();
         }
 
-        // Check and remove platforms that are too far behind the player
         RemoveOldPlatforms();
     }
 
-    // Generate initial platforms at the start of the game
     private void GenerateInitialPlatforms()
     {
         for (int i = 0; i < platformsPerChunk; i++)
@@ -48,7 +46,6 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    // Generate a new chunk of platforms
     private void GenerateChunk()
     {
         for (int i = 0; i < platformsPerChunk; i++)
@@ -57,42 +54,52 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    // Generate a row of platforms in the three lanes
+    private void GenerateObstacle()
+    {
+        float lane = Random.Range(-3, 4) * laneSpacing;
+        float distance = Random.Range(2, 4) * laneSpacing;
+        Vector3 lanePosition = new Vector3(lane, 1, lastGeneratedZ);
+        Vector3 lanePosition2 = new Vector3(lane + distance, 1, lastGeneratedZ);
+        GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstaclePrefab2 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstacle = Instantiate(obstaclePrefab, lanePosition, Quaternion.identity);
+        GameObject obstacle2 = Instantiate(obstaclePrefab2, lanePosition2, Quaternion.identity);
+        ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
+        obstacleMovement.InitialPosition = lanePosition;
+    }
+
     private void GenerateRowOfPlatforms()
     {
-        // Loop through the 11 lanes (left, center, right)
         for (int lane = -5; lane <= 5; lane++)
         {
-            // Calculate lane position by adjusting X based on the lane
             Vector3 lanePosition = spawnPosition + new Vector3(lane * laneSpacing, 0, 0);
-
-            // Instantiate the platform in the current lane
             GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
-
-            // Set the Map GameObject as the parent of the platform
             platform.transform.parent = this.transform;
-
-            // Add the platform to the list of active platforms
             activePlatforms.Add(platform);
         }
 
-        // Update the spawn position for the next row of platforms
         spawnPosition += new Vector3(0, 0, platformLength);
-        lastGeneratedZ = spawnPosition.z;  // Update the Z-position of the last generated platform
+        lastGeneratedZ = spawnPosition.z;
     }
 
-    // Remove platforms that are too far behind the player
     private void RemoveOldPlatforms()
     {
-        // Iterate through the list of active platforms
         for (int i = activePlatforms.Count - 1; i >= 0; i--)
         {
             GameObject platform = activePlatforms[i];
             if (platform.transform.position.z < player.position.z - maxDistanceBehind)
             {
-                // Remove the platform from the list and destroy it
                 activePlatforms.RemoveAt(i);
                 Destroy(platform);
+            }
+        }
+        for (int i = activeObstacles.Count - 1; i >= 0; i--)
+        {
+            GameObject obstacle = activeObstacles[i];
+            if (obstacle.transform.position.z < player.position.z - maxDistanceBehind)
+            {
+                activeObstacles.RemoveAt(i);
+                Destroy(obstacle);
             }
         }
     }
