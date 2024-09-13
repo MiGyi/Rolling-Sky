@@ -9,16 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7293701
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81c7f6695af7d0b40981112b9b49841a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -88,7 +96,7 @@ MonoBehaviour:
   isSpinning: 0
   SpinSpeed: {x: 0, y: 0, z: 0}
   isGoingStraight: 1
-  Movement: {x: 0, y: 0, z: -0.5}
+  Movement: {x: 0, y: 0, z: -2}
   isMovingHorizontally: 0
   HorizontalRange: 0
   HorizontalSpeed: 0
