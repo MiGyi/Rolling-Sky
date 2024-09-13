@@ -39,6 +39,9 @@ public class MapGenerator : MonoBehaviour
 
             GenerateChunk();
             GenerateObstacle();
+
+            GenerateChunk();
+            GenerateObstacle();
         }
 
         RemoveOldPlatforms();
@@ -66,9 +69,9 @@ public class MapGenerator : MonoBehaviour
         float distance = Random.Range(-2, -4) * laneSpacing;
         float distance2 = Random.Range(2, 4) * laneSpacing;
         
-        Vector3 lanePosition = new Vector3(lane, 1, lastGeneratedZ);
-        Vector3 lanePosition2 = new Vector3(lane + distance, 1, lastGeneratedZ);
-        Vector3 lanePosition3 = new Vector3(lane + distance2, 1, lastGeneratedZ);
+        Vector3 lanePosition = new Vector3(lane, 0.5f, lastGeneratedZ);
+        Vector3 lanePosition2 = new Vector3(lane + distance, 0.5f, lastGeneratedZ);
+        Vector3 lanePosition3 = new Vector3(lane + distance2, 0.5f, lastGeneratedZ);
 
         GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         GameObject obstaclePrefab2 = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];

@@ -96,7 +96,7 @@ MonoBehaviour:
   isSpinning: 0
   SpinSpeed: {x: 0, y: 0, z: 0}
   isGoingStraight: 1
-  Movement: {x: 0, y: 0, z: -2}
+  Movement: {x: 0, y: 0, z: -4}
   isMovingHorizontally: 0
   HorizontalRange: 0
   HorizontalSpeed: 0

@@ -314,8 +314,8 @@ MonoBehaviour:
   player: {fileID: 1215276688}
   platformLength: 2
   laneSpacing: 2
-  platformsPerChunk: 5
-  generationDistanceAhead: 10
+  platformsPerChunk: 10
+  generationDistanceAhead: 50
   maxDistanceBehind: 10
 --- !u!4 &957372608
 Transform:
@@ -546,11 +546,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: speed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: threshold
-      value: 0.6
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
+      propertyPath: deltaSpeed
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
