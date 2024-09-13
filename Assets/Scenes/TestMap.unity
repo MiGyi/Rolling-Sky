@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 42254b5a6412c2148995d4f344290dcf, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 633516681}
   - component: {fileID: 633516680}
   - component: {fileID: 633516682}
+  - component: {fileID: 633516683}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -182,6 +183,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
   depthValue: 12
+--- !u!114 &633516683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633516679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49238b4e417e9f0498d04e252896400f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027b1bc66cf7055489e32293dc7c13b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 7871186920936463004, guid: 7c05f8d9a31031145b4687ef16209458, type: 3}
+  platformPrefab: {fileID: 4218811866108781560, guid: b76afa4b0490ae0449a9f4e639755b55, type: 3}
   obstaclePrefabs:
   - {fileID: 1654875623042400083, guid: e3345b7687454d34a89f4a8b274ce6d8, type: 3}
   - {fileID: 1719925528288471760, guid: 48bbe2117ca62c64dadf29cdecf836e2, type: 3}
@@ -494,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243420644523429660, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1243420644523429660, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -546,11 +559,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: speed
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: threshold
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5255982793708923134, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
       propertyPath: deltaSpeed
