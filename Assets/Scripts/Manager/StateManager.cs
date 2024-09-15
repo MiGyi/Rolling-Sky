@@ -14,11 +14,6 @@ public class StateManager : MonoBehaviour
         currentState = new InitializeState(this);
     }
 
-    private void Start()
-    {
-        currentState = new ReadyState(this);
-    }
-
     private void Update()
     {
         currentState.Update();
