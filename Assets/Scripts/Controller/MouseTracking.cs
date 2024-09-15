@@ -39,6 +39,7 @@ public class MouseTracking : MonoBehaviour
             yPosition = mainCamera.WorldToScreenPoint(player.transform.position).y;
 
             depthValue = playerToCamera.magnitude;
+            
         }
     }
 
@@ -56,7 +57,8 @@ public class MouseTracking : MonoBehaviour
 
             // Convert the mouse position to world position
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
+            // Debug.Log("world position: " + worldPosition);
+            
             return worldPosition.x;
         }
 
