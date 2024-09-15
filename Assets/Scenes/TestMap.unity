@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 633516680}
   - component: {fileID: 633516682}
   - component: {fileID: 633516683}
+  - component: {fileID: 633516684}
+  - component: {fileID: 633516685}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -154,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGame: 0
+  controlMouse: 0
 --- !u!4 &633516681
 Transform:
   m_ObjectHideFlags: 0
@@ -182,6 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
+  player: {fileID: 0}
+  yPosition: 540
   depthValue: 12
 --- !u!114 &633516683
 MonoBehaviour:
@@ -193,6 +198,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49238b4e417e9f0498d04e252896400f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputController: {fileID: 0}
+  stateManager: {fileID: 0}
+--- !u!114 &633516684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633516679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59266c418cfdc8f4285d7dcefd18dbbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &633516685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633516679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c15016324eeb464da271d1f26bfc392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &705507993
