@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     [Header("Ball Movement")]
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float deltaSpeed = 0.05f;
-    [SerializeField] private float jumpingForce = 5.0f;
+    [SerializeField] private float jumpingForce = 100.0f;
 
     [Header("Threshold")]
     [SerializeField] private float threshold = 0.5f;
@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
     }
 
     public bool IsFalling() {
-        return rb.velocity.y < -5.0f;
+        return transform.position.y < -10.0f;
     }
     public void FollowMousePosition(Vector3 mousePosition)
     {
@@ -41,10 +41,18 @@ public class Ball : MonoBehaviour
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             return worldPosition;
     }
+    public void Jump()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity.y = jumpingForce;
+        rb.velocity = velocity;
+    }
     public void AutoMoveForward()
     {
         // Auto run forward with speed increase over time
-        rb.velocity = new Vector3(0, 0, speed);
+        Vector3 velocity = rb.velocity;
+        velocity.z = speed;
+        rb.velocity = velocity;
         speed += Time.deltaTime * deltaSpeed;
     }
 }
