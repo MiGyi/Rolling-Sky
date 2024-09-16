@@ -20,6 +20,7 @@ public class PlayingState : BaseState
         ball.AutoMoveForward();
         if (ball.IsFalling())
         {
+            Debug.Log("Ball is falling");
             stateManager.ChangeState(stateManager.CreateLoseState());
         }
     }
