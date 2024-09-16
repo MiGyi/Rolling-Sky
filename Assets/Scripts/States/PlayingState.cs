@@ -11,6 +11,7 @@ public class PlayingState : BaseState
 
     public override void Update()
     {
+        mapGenerator.UpdateMap();
         if (inputController.GetPauseButtonDown())
         {
             stateManager.ChangeState(stateManager.CreatePauseState());

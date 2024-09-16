@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public StateManager stateManager;
 
     public GameData gameData = new GameData();
+    public MapGenerator mapGenerator;
     
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        Debug.Log("Score: " + gameData.score);
+        // Debug.Log("Score: " + gameData.score);
     }
     public void HandleGameStartEvent()
     {

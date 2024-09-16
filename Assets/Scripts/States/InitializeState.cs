@@ -6,10 +6,8 @@ public class InitializeState : BaseState
     public InitializeState(StateManager stateManager) : base(stateManager)
     {
         // Initialize the game
-        InitializeMap();
-        InitializePlayer();
-        InitializeObstacles();
         gameData.Reset();
+        mapGenerator.InitMap();
         // delay 2 seconds before starting the game
         stateManager.StartCoroutine(StartGame());
     }
@@ -18,18 +16,6 @@ public class InitializeState : BaseState
     {
         yield return new WaitForSeconds(0.1f);
         stateManager.ChangeState(stateManager.CreateReadyState());
-    }
-    private void InitializeMap()
-    {
-        // Initialize the map
-    }
-    private void InitializePlayer()
-    {
-        // Initialize the player
-    }
-    private void InitializeObstacles()
-    {
-        // Initialize the obstacles
     }
     public override void Update()
     {
