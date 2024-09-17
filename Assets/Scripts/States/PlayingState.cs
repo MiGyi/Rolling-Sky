@@ -6,6 +6,7 @@ public class PlayingState : BaseState
     private Ball ball;
     public PlayingState(StateManager stateManager) : base(stateManager)
     {
+        Time.timeScale = 1;
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
     }
 

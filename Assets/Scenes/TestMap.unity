@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputController: {fileID: 0}
   stateManager: {fileID: 0}
+  mapGenerator: {fileID: 957372607}
 --- !u!114 &633516684
 MonoBehaviour:
   m_ObjectHideFlags: 0

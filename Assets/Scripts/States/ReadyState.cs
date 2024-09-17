@@ -5,7 +5,7 @@ public class ReadyState : BaseState
 {
     public ReadyState(StateManager stateManager) : base(stateManager)
     {
-        Time.timeScale = 0;
+
     }
 
     public override void Update()
