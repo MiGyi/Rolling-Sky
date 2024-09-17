@@ -155,8 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3c63c1c14139d4f85982fc8d1fe5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGame: 0
-  controlMouse: 0
 --- !u!4 &633516681
 Transform:
   m_ObjectHideFlags: 0
@@ -184,10 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f602dd84050c2b540bf70232b8768e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 963194227}
-  player: {fileID: 0}
-  yPosition: 540
-  depthValue: 12
 --- !u!114 &633516683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +383,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -498,10 +493,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb8bd53ae812e4e8ee82b3e7b0ff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ball: {fileID: 1215276682}
+  ball: {fileID: 1215276682}
   offset: {x: 0, y: 8, z: -10}
   CameraVerticalRotation: 30
   MaximumHorizontalCameraRange: 6
+  originalVelocity: 0
+  reduceSpeed: 5
+  shakeAmount: 1
+  originalPos: {x: 0, y: 0, z: 0}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383469da9f465e848a105b0bca1b6fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 0
+  shakeAmount: 0.7
+  decreaseFactor: 1
+  originalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1215276682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1876405448786351526, guid: 4646866e6f1b88b41a7b7fcabd27b92d, type: 3}
