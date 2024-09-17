@@ -45,4 +45,9 @@ public class InitializeState : BaseState
     {
         inputController.SetEnableInput(true);
     }
+
+    public override void Reset()
+    {
+
+    }
 }

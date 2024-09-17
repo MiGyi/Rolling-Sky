@@ -16,4 +16,9 @@ public class LoseState: BaseState {
     public override void EnableInput() {
         inputController.SetEnableInput(true);
     }
+
+    public override void Reset()
+    {
+        
+    }
 }

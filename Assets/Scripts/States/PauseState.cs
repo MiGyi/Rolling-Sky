@@ -3,6 +3,7 @@ using UnityEngine;
 public class PauseState: BaseState {
     public PauseState(StateManager stateManager): base(stateManager) {
         Time.timeScale = 0;
+        uiManager.OpenPauseScreen();
     }
 
     public override void Update() {
@@ -17,5 +18,10 @@ public class PauseState: BaseState {
 
     public override void EnableInput() {
         inputController.SetEnableInput(true);
+    }
+
+    public override void Reset()
+    {
+        
     }
 }
