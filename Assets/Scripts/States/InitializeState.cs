@@ -9,7 +9,7 @@ public class InitializeState : BaseState
         InitializeMap();
         InitializePlayer();
         InitializeObstacles();
-        
+        gameData.Reset();
         // delay 2 seconds before starting the game
         stateManager.StartCoroutine(StartGame());
     }

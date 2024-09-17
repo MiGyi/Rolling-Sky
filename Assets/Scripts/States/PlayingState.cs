@@ -17,10 +17,14 @@ public class PlayingState : BaseState
             stateManager.ChangeState(stateManager.CreatePauseState());
             return;
         }
+
         ball.FollowMousePosition(inputController.GetMousePosition());
         ball.AutoMoveForward();
+        gameData.score = (int)ball.transform.position.z;
+        
         if (ball.IsFalling())
         {
+            Debug.Log("Ball is falling");
             stateManager.ChangeState(stateManager.CreateLoseState());
         }
     }

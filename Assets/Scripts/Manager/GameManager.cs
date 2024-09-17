@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public InputController inputController;
     public StateManager stateManager;
+
+    public GameData gameData = new GameData();
     public UIManager uiManager;
     
     private void Awake()
@@ -15,6 +17,10 @@ public class GameManager : MonoBehaviour
         inputController = GetComponent<InputController>();
         stateManager = GetComponent<StateManager>();
         EventManager.Instance.init(this);
+    }
+
+    private void Update() {
+        Debug.Log("Score: " + gameData.score);
     }
     public void HandleGameStartEvent()
     {
