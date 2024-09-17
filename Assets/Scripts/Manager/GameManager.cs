@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public InputController inputController;
     public StateManager stateManager;
+    public UIManager uiManager;
     
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void HandleGamePauseEvent()
     {
-        Time.timeScale = 0.0f;
+        stateManager.ChangeState(stateManager.CreatePauseState());
     }
 
     public void HandleGameResumeEvent()

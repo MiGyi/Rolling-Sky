@@ -5,7 +5,7 @@ public class ReadyState : BaseState
 {
     public ReadyState(StateManager stateManager) : base(stateManager)
     {
-        
+        uiManager.OpenHintScreen();
     }
 
     public override void Update()
@@ -28,5 +28,8 @@ public class ReadyState : BaseState
         inputController.SetEnableInput(true);
     }
 
-
+    public override void Reset()
+    {
+        
+    }
 }

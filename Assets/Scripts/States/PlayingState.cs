@@ -7,6 +7,7 @@ public class PlayingState : BaseState
     public PlayingState(StateManager stateManager) : base(stateManager)
     {
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
+        uiManager.OpenIngameScreen();
     }
 
     public override void Update()
@@ -33,4 +34,10 @@ public class PlayingState : BaseState
     {
         inputController.SetEnableInput(true);
     }
+
+    public override void Reset()
+    {
+        uiManager.OpenIngameScreen();
+    }
+
 }
