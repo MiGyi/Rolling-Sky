@@ -353,7 +353,7 @@ MonoBehaviour:
   - {fileID: 9015470302665427816, guid: 84e0c4f028099c54a8e99198503f1fe2, type: 3}
   player: {fileID: 1215276688}
   platformsPerChunk: 10
-  generationDistanceAhead: 50
+  generationDistanceAhead: 30
   maxDistanceBehind: 10
   mapFile: {fileID: 4900000, guid: b3463fc234577f746b0f8f370fe7e953, type: 3}
 --- !u!4 &957372608
