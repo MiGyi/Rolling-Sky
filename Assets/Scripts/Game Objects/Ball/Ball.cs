@@ -9,9 +9,10 @@ public class Ball : MonoBehaviour
     
     // Header for the serialized fields
     [Header("Ball Movement")]
-    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float speed = 10.0f;
     [SerializeField] private float deltaSpeed = 0.05f;
-    [SerializeField] private float jumpingForce = 100.0f;
+    [SerializeField] private float jumpingForce = 5.0f;
+    [SerializeField] private ParticleSystem explosionEffect;
 
     [Header("Threshold")]
     [SerializeField] private float threshold = 0.5f;
@@ -21,8 +22,18 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public float GetCurrentSpeed()
+    {
+        return speed;
+    }
     public bool IsFalling() {
         return transform.position.y < -10.0f;
+    }
+
+    public void Explode()
+    {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
     public void FollowMousePosition(Vector3 mousePosition)
     {

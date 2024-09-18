@@ -30,6 +30,10 @@ public class MapGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
         if (player.position.z + generationDistanceAhead > lastGeneratedZ)
         {
             for (int i = 0; i < 4; i++)

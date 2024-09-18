@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        Debug.Log("Score: " + gameData.score);
+        
     }
     public void HandleGameStartEvent()
     {
