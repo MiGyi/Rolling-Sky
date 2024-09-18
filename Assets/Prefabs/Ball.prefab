@@ -106,7 +106,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2654889747780519636}
   speed: 10
+  deltaSpeed: 0.05
   jumpingForce: 5
+  explosionEffect: {fileID: 704696383602470962, guid: ef32fa28e3274d54689f00c902b33745, type: 3}
+  threshold: 0.5
 --- !u!54 &2654889747780519636
 Rigidbody:
   m_ObjectHideFlags: 0

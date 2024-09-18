@@ -6,12 +6,14 @@ public class PlayingState : BaseState
     private Ball ball;
     public PlayingState(StateManager stateManager) : base(stateManager)
     {
+        Time.timeScale = 1;
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
         uiManager.OpenIngameScreen();
     }
 
     public override void Update()
     {
+        mapGenerator.UpdateMap();
         if (inputController.GetPauseButtonDown())
         {
             stateManager.ChangeState(stateManager.CreatePauseState());
