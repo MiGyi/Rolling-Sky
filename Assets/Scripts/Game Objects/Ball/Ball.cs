@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float deltaSpeed = 0.05f;
     [SerializeField] private float jumpingForce = 5.0f;
+
+    [SerializeField] private float initialJumpingForce = 5.0f;
     [SerializeField] private ParticleSystem explosionEffect;
 
     [Header("Threshold")]
@@ -29,7 +32,12 @@ public class Ball : MonoBehaviour
     public bool IsFalling() {
         return transform.position.y < -10.0f;
     }
-
+    public void StartJumping()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity.y = initialJumpingForce;
+        rb.velocity = velocity;
+    }
     public void Explode()
     {
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
@@ -65,5 +73,10 @@ public class Ball : MonoBehaviour
         velocity.z = speed;
         rb.velocity = velocity;
         speed += Time.deltaTime * deltaSpeed;
+    }
+
+    public void StartGravity()
+    {
+        rb.useGravity = true;
     }
 }

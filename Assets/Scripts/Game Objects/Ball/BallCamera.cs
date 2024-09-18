@@ -31,6 +31,9 @@ public class BallCamera : MonoBehaviour
     void Update()
     {
         //float yPos = Ball.transform.position.y;
+        if (ball != null && ball.transform.position.z < 0) {
+            return;
+        }
         if (originalVelocity > 0)
         {
             float yPos = 0;
