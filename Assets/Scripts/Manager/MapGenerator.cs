@@ -6,6 +6,7 @@ public class MapGenerator : MonoBehaviour
 {
     [Header("References")]
     public GameObject platformPrefab;
+    public GameObject jumpingPlatformPrefab;
     public GameObject[] obstaclePrefabs;
     public Transform player;
 
@@ -83,8 +84,9 @@ public class MapGenerator : MonoBehaviour
     {
         for (int lane = -5; lane <= 5; lane++)
         {
-            Vector3 lanePosition = spawnPosition + new Vector3(lane * laneSpacing, 0, 0);
-            GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
+            Vector3 lanePosition = spawnPosition + new Vector3(lane * laneSpacing, -0.25f, 0);
+            int random = Random.Range(0, 2);
+            GameObject platform = Instantiate(random == 0 ? platformPrefab : jumpingPlatformPrefab, lanePosition, Quaternion.identity);
             platform.transform.parent = this.transform;
             activePlatforms.Add(platform);
         }

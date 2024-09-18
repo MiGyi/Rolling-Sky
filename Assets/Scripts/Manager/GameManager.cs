@@ -8,12 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public InputController inputController;
     public StateManager stateManager;
+
+    public GameData gameData = new GameData();
+    public UIManager uiManager;
     
     private void Awake()
     {
         inputController = GetComponent<InputController>();
         stateManager = GetComponent<StateManager>();
         EventManager.Instance.init(this);
+    }
+
+    private void Update() {
+        
     }
     public void HandleGameStartEvent()
     {
@@ -27,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void HandleGamePauseEvent()
     {
-        Time.timeScale = 0.0f;
+        stateManager.ChangeState(stateManager.CreatePauseState());
     }
 
     public void HandleGameResumeEvent()

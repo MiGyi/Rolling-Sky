@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour
         return speed;
     }
     public bool IsFalling() {
-        return rb.velocity.y < -5.0f;
+        return transform.position.y < -10.0f;
     }
 
     public void Explode()
@@ -52,11 +52,18 @@ public class Ball : MonoBehaviour
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             return worldPosition;
     }
+    public void Jump()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity.y = jumpingForce;
+        rb.velocity = velocity;
+    }
     public void AutoMoveForward()
     {
         // Auto run forward with speed increase over time
-        rb.velocity = new Vector3(0, 0, speed);
-        Debug.Log("Speed: " + rb.velocity.z);
+        Vector3 velocity = rb.velocity;
+        velocity.z = speed;
+        rb.velocity = velocity;
         speed += Time.deltaTime * deltaSpeed;
     }
 }

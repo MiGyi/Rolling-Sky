@@ -7,6 +7,7 @@ public class PlayingState : BaseState
     public PlayingState(StateManager stateManager) : base(stateManager)
     {
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
+        uiManager.OpenIngameScreen();
     }
 
     public override void Update()
@@ -16,10 +17,14 @@ public class PlayingState : BaseState
             stateManager.ChangeState(stateManager.CreatePauseState());
             return;
         }
+
         ball.FollowMousePosition(inputController.GetMousePosition());
         ball.AutoMoveForward();
+        gameData.score = (int)ball.transform.position.z;
+        
         if (ball.IsFalling())
         {
+            Debug.Log("Ball is falling");
             stateManager.ChangeState(stateManager.CreateLoseState());
         }
     }
@@ -33,4 +38,10 @@ public class PlayingState : BaseState
     {
         inputController.SetEnableInput(true);
     }
+
+    public override void Reset()
+    {
+        uiManager.OpenIngameScreen();
+    }
+
 }
