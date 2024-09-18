@@ -33,6 +33,7 @@ public class StateManager : MonoBehaviour
         }
         stateStack.Pop();
         currentState = stateStack.Peek();
+        currentState.Reset();
     }
 
     public void ClearStateStack()

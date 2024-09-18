@@ -7,6 +7,7 @@ public abstract class BaseState
     protected InputController inputController;
     protected GameData gameData;
     protected MapGenerator mapGenerator;
+    protected UIManager uiManager;
 
     public BaseState(StateManager stateManager)
     {
@@ -15,11 +16,13 @@ public abstract class BaseState
         inputController = stateManager.GetComponent<InputController>();
         gameData = gameManager.gameData;
         mapGenerator = gameManager.mapGenerator;
+        uiManager = gameManager.uiManager;
     }
 
 
     public abstract void Update();
     public abstract void DisableInput();
     public abstract void EnableInput();
+    public abstract void Reset();
 
 }

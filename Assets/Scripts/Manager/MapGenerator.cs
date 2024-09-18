@@ -32,7 +32,11 @@ public class MapGenerator : MonoBehaviour
 
     public void UpdateMap()
     {
-        if (player.position.z + generationDistanceAhead > lastGeneratedZ && mapDataQueue.Count > 0)
+        if (player == null)
+        {
+            return;
+        }
+        if (player.position.z + generationDistanceAhead > lastGeneratedZ)
         {
             GenerateChunkFromData();
         }

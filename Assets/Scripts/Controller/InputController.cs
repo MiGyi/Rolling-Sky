@@ -17,7 +17,7 @@ public class InputController : MonoBehaviour
 
     public bool GetPauseButtonDown() {
         if (!isEnableInput) return false;
-        return Input.GetKeyDown(KeyCode.P);
+        return Input.GetKeyDown(KeyCode.Escape);
     }
 
     public void LockCursor() {

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameData gameData = new GameData();
     public MapGenerator mapGenerator;
+    public UIManager uiManager;
     
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        // Debug.Log("Score: " + gameData.score);
+        
     }
     public void HandleGameStartEvent()
     {
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void HandleGamePauseEvent()
     {
-        Time.timeScale = 0.0f;
+        stateManager.ChangeState(stateManager.CreatePauseState());
     }
 
     public void HandleGameResumeEvent()
