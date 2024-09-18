@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public StateManager stateManager;
 
     public GameData gameData = new GameData();
+    public MapGenerator mapGenerator;
     public UIManager uiManager;
     
     private void Awake()

@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputController: {fileID: 0}
   stateManager: {fileID: 0}
+  mapGenerator: {fileID: 957372607}
   uiManager: {fileID: 1351575990}
 --- !u!114 &633516684
 MonoBehaviour:
@@ -382,7 +383,7 @@ GameObject:
   - component: {fileID: 957372607}
   m_Layer: 0
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: MapGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,11 +408,10 @@ MonoBehaviour:
   - {fileID: 414824002453263464, guid: 2b857713f3e59704ebe046ce29f83889, type: 3}
   - {fileID: 9015470302665427816, guid: 84e0c4f028099c54a8e99198503f1fe2, type: 3}
   player: {fileID: 1215276688}
-  platformLength: 2
-  laneSpacing: 2
   platformsPerChunk: 10
-  generationDistanceAhead: 50
+  generationDistanceAhead: 30
   maxDistanceBehind: 10
+  mapFile: {fileID: 4900000, guid: b3463fc234577f746b0f8f370fe7e953, type: 3}
 --- !u!4 &957372608
 Transform:
   m_ObjectHideFlags: 0

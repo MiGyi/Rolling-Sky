@@ -6,6 +6,7 @@ public abstract class BaseState
     protected GameManager gameManager;
     protected InputController inputController;
     protected GameData gameData;
+    protected MapGenerator mapGenerator;
     protected UIManager uiManager;
 
     public BaseState(StateManager stateManager)
@@ -14,6 +15,7 @@ public abstract class BaseState
         gameManager = stateManager.GetComponent<GameManager>();
         inputController = stateManager.GetComponent<InputController>();
         gameData = gameManager.gameData;
+        mapGenerator = gameManager.mapGenerator;
         uiManager = gameManager.uiManager;
     }
 
