@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LoseState : BaseState
@@ -8,6 +9,14 @@ public class LoseState : BaseState
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
         ball.Explode();
         Camera.main.GetComponent<BallCamera>().HandleLose();
+
+        stateManager.StartCoroutine(WaitAndOpenLoseScreen());
+    }
+
+    private IEnumerator WaitAndOpenLoseScreen()
+    {
+        yield return new WaitForSeconds(3f);
+        uiManager.OpenLoseScreen();
     }
 
     public override void Update()
