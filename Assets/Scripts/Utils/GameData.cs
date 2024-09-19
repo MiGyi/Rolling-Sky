@@ -22,6 +22,30 @@ public class GameData {
         }
     }
 
+    public int choosingMapIndex
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("choosingMapIndex", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("choosingMapIndex", value);
+        }
+    }
+
+    public int lastClearedMapIndex
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("lastClearedMapIndex", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("lastClearedMapIndex", value);
+        }
+    }
+
     public void Reset() {
         score = 0;
     }

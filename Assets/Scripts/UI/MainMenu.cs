@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject choosingGameModeScreen;
+
     public void Play()
     {
-        SceneManager.LoadScene("TestMap"); //temp
+        choosingGameModeScreen.SetActive(true);
     }
 
     public void Settings()
