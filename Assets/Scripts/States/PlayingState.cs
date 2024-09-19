@@ -45,7 +45,7 @@ public class PlayingState : BaseState
 
     public override void Reset()
     {
-        uiManager.OpenIngameScreen();
+        
     }
 
 }

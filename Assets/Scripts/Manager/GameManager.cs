@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         stateManager.ReturnToPreviousState();
+        uiManager.ReturnToPreviousScreen();
     }
 
     public void HandleGameRestartEvent()

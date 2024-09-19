@@ -15,13 +15,14 @@ public class UIManager : MonoBehaviour
 
     public void OpenPauseScreen()
     {
-        pauseScreen.SetActive(true);
+        AddScreenToStack(pauseScreen);
     }
 
     public void AddScreenToStack(GameObject screen)
     {
         screenStack.Push(screen);
         screen.SetActive(true);
+        Debug.Log("Opening screen: " + screenStack.Peek().name);
     }
 
     public void SwitchToScreen(GameObject destinationScreen)
@@ -33,48 +34,38 @@ public class UIManager : MonoBehaviour
     }
     public void ReturnToPreviousScreen()
     {
-        if (screenStack.Count == 0)
+        if (screenStack.Count <= 1)
         {
             throw new System.Exception("No previous screen to return to");
         }
-        screenStack.Pop();
-        if (screenStack.Count == 0)
-        {
-            OpenIngameScreen();
-        }
-        else
-        {
-            screenStack.Peek().SetActive(true);
-        }
+        GameObject screen = screenStack.Pop();
+        Debug.Log("Returning to previous screen: " + screen.name);
+        screen.SetActive(false);
+        screenStack.Peek().SetActive(true);
     }
     public void OpenHintScreen()
     {
-        hintScreen.SetActive(true);
         AddScreenToStack(hintScreen);
     }
 
     public void OpenIngameScreen()
     {
-        ingameScreen.SetActive(true);
         AddScreenToStack(ingameScreen);
     }
     
 
     public void OpenLoseScreen()
     {
-        loseScreen.SetActive(true);
         AddScreenToStack(loseScreen);
     }
 
     public void OpenWinScreen()
     {
-        winScreen.SetActive(true);
         AddScreenToStack(winScreen);
     }
 
     public void OpenSettingsScreen()
     {
-        settingsScreen.SetActive(true);
         AddScreenToStack(settingsScreen);
     }
 }
