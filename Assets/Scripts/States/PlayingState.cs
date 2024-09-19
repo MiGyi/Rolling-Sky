@@ -8,6 +8,8 @@ public class PlayingState : BaseState
     {
         Time.timeScale = 1;
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
+        ball.StartGravity();
+        ball.StartJumping();
         uiManager.OpenIngameScreen();
     }
 
