@@ -95,22 +95,39 @@ public class MapGenerator : MonoBehaviour
         for (int lane = 0; lane < rowElements.Length; lane++)
         {
             int element = int.Parse(rowElements[lane]);
-
-            Vector3 lanePosition = spawnPosition + new Vector3((lane - (rowElements.Length / 2)) * platformWidth, -0.25f, 0);
-
-            GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
-            platform.transform.parent = this.transform;
-            activePlatforms.Add(platform);
-
-            if (element >= 1 && element <= obstaclePrefabs.Length)
+            
+            // Empty platform
+            if (element == 6) 
             {
-                Vector3 obstaclePosition = lanePosition + new Vector3(0, 0.5f, 0);
+                continue;
+            }
+            else
+            {
+                Vector3 lanePosition = spawnPosition + new Vector3((lane - (rowElements.Length / 2)) * platformWidth, -0.25f, 0);
+                if (element != 1) 
+                {
 
-                GameObject obstacle = Instantiate(obstaclePrefabs[element - 1], obstaclePosition, Quaternion.identity);
-                ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
-                obstacleMovement.InitialPosition = obstaclePosition;
+                    GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
+                    platform.transform.parent = this.transform;
+                    activePlatforms.Add(platform);
+                }
 
-                activeObstacles.Add(obstacle);
+                if (element == 1) {
+                    GameObject platform = Instantiate(jumpingPlatformPrefab, lanePosition, Quaternion.identity);
+                    platform.transform.parent = this.transform;
+                    activePlatforms.Add(platform);
+                }
+
+                if (element >= 2 && element <= obstaclePrefabs.Length + 1)
+                {
+                    Vector3 obstaclePosition = lanePosition + new Vector3(0, 0.5f, 0);
+
+                    GameObject obstacle = Instantiate(obstaclePrefabs[element - 2], obstaclePosition, Quaternion.identity);
+                    ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
+                    obstacleMovement.InitialPosition = obstaclePosition;
+
+                    activeObstacles.Add(obstacle);
+                }
             }
         }
 
