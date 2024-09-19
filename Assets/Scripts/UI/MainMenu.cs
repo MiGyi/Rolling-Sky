@@ -9,11 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-<<<<<<< HEAD
-        SceneManager.LoadScene("GameScene"); //temp
-=======
         choosingGameModeScreen.SetActive(true);
->>>>>>> develop
     }
 
     public void Settings()
