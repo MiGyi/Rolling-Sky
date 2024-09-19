@@ -10,7 +10,7 @@ public class PlayingState : BaseState
         ball = GameObject.FindWithTag("Player").GetComponent<Ball>();
         ball.StartGravity();
         ball.StartJumping();
-        uiManager.OpenIngameScreen();
+        uiManager.SwitchToScreen(uiManager.ingameScreen);
     }
 
     public override void Update()
@@ -53,7 +53,7 @@ public class PlayingState : BaseState
 
     public override void Reset()
     {
-        uiManager.OpenIngameScreen();
+        
     }
 
 }
