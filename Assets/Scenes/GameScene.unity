@@ -599,6 +599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2341900705007249556, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4266911835392919652, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
       propertyPath: m_Camera
       value: 
@@ -646,6 +650,10 @@ PrefabInstance:
     - target: {fileID: 6369139609453458159, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
       propertyPath: m_Name
       value: UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896495625549560061, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
