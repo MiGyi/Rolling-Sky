@@ -19,6 +19,7 @@ public class MapButton : MonoBehaviour
     public void MapButtonOnClick()
     {
         gameData.choosingMapIndex = mapIndex;
-        SceneManager.LoadScene("CasualScene");
+        gameData.gameMode = 1;
+        SceneManager.LoadScene("GameScene");
     }
 }

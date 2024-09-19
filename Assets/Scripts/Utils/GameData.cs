@@ -3,6 +3,19 @@ using UnityEngine.UIElements.Experimental;
 
 public class GameData {
     public int _score = 0;
+    
+    // 1: casual, 0: endless
+    public int gameMode
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("gameMode", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("gameMode", value);
+        }
+    }
     public int score {
         get {
             // return value without PlayerPrefs

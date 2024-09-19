@@ -18,7 +18,8 @@ public class ChoosingModeScreen : MonoBehaviour
 
     public void EndlessMode()
     {
-        SceneManager.LoadScene("EndlessScene");
+        gameData.gameMode = 0;
+        SceneManager.LoadScene("GameScene");
     }
 
     public void CasualMode()

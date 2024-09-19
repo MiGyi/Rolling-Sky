@@ -14,7 +14,7 @@ public class MapGenerator : MonoBehaviour
     public int platformsPerChunk = 10;  // Number of platforms to generate in each chunk
     public float generationDistanceAhead = 50.0f;  // Distance ahead of the player to generate platforms
     public float maxDistanceBehind = 20.0f;  // Maximum distance behind the player to keep platforms
-    public TextAsset mapFile;
+    public TextAsset[] mapFile;
 
     private Vector3 spawnPosition = Vector3.zero;  // Position where the next chunk of platforms will spawn
     private List<GameObject> activePlatforms = new List<GameObject>();  // Keep track of active platforms
@@ -22,6 +22,12 @@ public class MapGenerator : MonoBehaviour
     private float lastGeneratedZ = 0;  // The Z-position of the last generated platform
 
     private Queue<string> mapDataQueue = new Queue<string>(); // To store lines from the file
+    private GameData gameData = new GameData();
+
+    private bool skipNextRows = false;
+    private int rowsToSkip = 0;
+    private int preventSpawnJumping = 0;
+    private int preventSpawnObstacle = 0;
 
     public void InitMap()
     {
@@ -43,10 +49,23 @@ public class MapGenerator : MonoBehaviour
 
         RemoveOldPlatforms();
     }
+    public void UpdateEndless()
+    {
+        if (player.position.z + generationDistanceAhead > lastGeneratedZ)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GenerateChunk();
+            }
+        }
+
+        RemoveOldPlatforms();
+    }
 
     private void LoadMapDataFromFile()
     {
-        string[] lines = mapFile.text.Split('\n');
+        int level = gameData.choosingMapIndex;
+        string[] lines = mapFile[level - 1].text.Split('\n');
         
         foreach (var line in lines)
         {
@@ -93,6 +112,121 @@ public class MapGenerator : MonoBehaviour
 
                 activeObstacles.Add(obstacle);
             }
+        }
+
+        spawnPosition += new Vector3(0, 0, platformLength);
+        lastGeneratedZ = spawnPosition.z;
+    }
+
+    private void GenerateChunk()
+    {
+        for (int i = 0; i < platformsPerChunk; i++)
+        {
+            GenerateRowOfPlatforms();
+        }
+    }
+
+    private void GenerateObstaclesForRow(Vector3 rowSpawnPosition)
+    {
+        float platformWidth = GetPrefabWidth(platformPrefab);
+
+        int obstaclesCount = 0;
+        int maxObstacles = 3;
+
+        if (preventSpawnObstacle > 0)
+        {
+            preventSpawnObstacle--;
+            return;
+        }
+
+        for (int lane = -5; lane <= 5; lane++)
+        {
+            if (Random.Range(0, 5) == 0)
+            {
+                if (obstaclesCount >= maxObstacles)
+                {
+                    break;
+                }
+
+                Vector3 obstaclePosition = rowSpawnPosition + new Vector3(lane * platformWidth, 0.5f, 0);
+
+                GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+                GameObject obstacle = Instantiate(obstaclePrefab, obstaclePosition, Quaternion.identity);
+
+                ObstacleMovement obstacleMovement = obstacle.GetComponent<ObstacleMovement>();
+                obstacleMovement.InitialPosition = obstaclePosition;
+
+                activeObstacles.Add(obstacle);
+
+                obstaclesCount++;
+                lane += 4;
+                preventSpawnObstacle = 2;
+            }
+        }
+    }
+
+    private void GenerateRowOfPlatforms()
+    {
+        float platformLength = GetPrefabLength(platformPrefab);
+        float platformWidth = GetPrefabWidth(platformPrefab);
+
+        bool hasJumpingPlatform = false;
+
+        if (skipNextRows)
+        {
+            rowsToSkip--;
+            spawnPosition += new Vector3(0, 0, platformLength);
+            if (rowsToSkip <= 0)
+            {
+                skipNextRows = false;
+            }
+            return;
+        }
+
+        Vector3 rowSpawnPosition = spawnPosition;
+
+        if (preventSpawnJumping > 0)
+        {
+            for (int lane = -5; lane <= 5; lane++)
+            {
+                Vector3 lanePosition = spawnPosition + new Vector3(lane * platformWidth, -0.25f, 0);
+
+                GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
+                platform.transform.parent = this.transform;
+                activePlatforms.Add(platform);
+            }
+            preventSpawnJumping--;
+        }
+        else
+        {
+            for (int lane = -5; lane <= 5; lane++)
+            {
+                Vector3 lanePosition = spawnPosition + new Vector3(lane * platformWidth, -0.25f, 0);
+
+                int random = Random.Range(0, 5);
+                GameObject platform;
+
+                if (random < 3)
+                {
+                    platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
+                }
+                else
+                {
+                    platform = Instantiate(jumpingPlatformPrefab, lanePosition, Quaternion.identity);
+                    skipNextRows = true;
+                    hasJumpingPlatform = true;
+                    rowsToSkip = 5;
+                    preventSpawnJumping = 7;
+                }
+
+                platform.transform.parent = this.transform;
+                activePlatforms.Add(platform);
+            }
+        }
+
+        if (!hasJumpingPlatform)
+        {
+            GenerateObstaclesForRow(rowSpawnPosition);
         }
 
         spawnPosition += new Vector3(0, 0, platformLength);

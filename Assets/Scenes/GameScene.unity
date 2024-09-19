@@ -411,7 +411,12 @@ MonoBehaviour:
   platformsPerChunk: 10
   generationDistanceAhead: 30
   maxDistanceBehind: 10
-  mapFile: {fileID: 4900000, guid: b3463fc234577f746b0f8f370fe7e953, type: 3}
+  mapFile:
+  - {fileID: 4900000, guid: b3463fc234577f746b0f8f370fe7e953, type: 3}
+  - {fileID: 4900000, guid: f262cf68112d2a340b197ffaa0b0475b, type: 3}
+  - {fileID: 4900000, guid: b23a3264a7f143b45ac69a2ee27e354c, type: 3}
+  - {fileID: 4900000, guid: 0955199fb32a87249831d9f6e821ba2b, type: 3}
+  - {fileID: 4900000, guid: bd5a68ef541cdd94cb3851b203ed9c44, type: 3}
 --- !u!4 &957372608
 Transform:
   m_ObjectHideFlags: 0
