@@ -51,7 +51,7 @@ public class GameData {
     {
         get
         {
-            return PlayerPrefs.GetInt("lastClearedMapIndex", 1);
+            return PlayerPrefs.GetInt("lastClearedMapIndex", 4);
         }
         set
         {
