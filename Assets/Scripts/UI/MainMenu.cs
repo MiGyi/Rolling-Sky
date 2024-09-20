@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject choosingGameModeScreen;
+    public GameObject settingScreen;
 
     public void Play()
     {
@@ -14,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
-        //unimplemented
+        settingScreen.SetActive(true);
     }
 
     public void Customize()

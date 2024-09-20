@@ -900,6 +900,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3031275125074959120, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7731910745677807075}
+    - target: {fileID: 3031275125074959120, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 3176964857596662647, guid: e7925e1d64158a14482378aeba2ccc96, type: 3}
       propertyPath: m_Color.a
       value: 1
