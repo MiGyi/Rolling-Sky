@@ -20,9 +20,6 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.init(this);
     }
 
-    private void Update() {
-        
-    }
     public void HandleGameStartEvent()
     {
         Time.timeScale = 1.0f;

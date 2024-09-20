@@ -21,6 +21,11 @@ public class PlayingState : BaseState
         }
         else
         {
+            if (ball.transform.position.z > mapGenerator.GetLastGeneratedZ())
+            {
+                stateManager.ChangeState(stateManager.CreateWinState());
+                return;
+            }
             mapGenerator.UpdateMap();
         }
 

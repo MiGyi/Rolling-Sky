@@ -307,4 +307,9 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
+
+    public float GetLastGeneratedZ()
+    {
+        return lastGeneratedZ;
+    }
 }
