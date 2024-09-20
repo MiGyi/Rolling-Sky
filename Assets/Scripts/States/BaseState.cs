@@ -8,7 +8,6 @@ public abstract class BaseState
     protected GameData gameData;
     protected MapGenerator mapGenerator;
     protected UIManager uiManager;
-
     public BaseState(StateManager stateManager)
     {
         this.stateManager = stateManager;

@@ -17,9 +17,6 @@ public class Ball : MonoBehaviour
     [SerializeField] private float initialJumpingForce = 5.0f;
     [SerializeField] private ParticleSystem explosionEffect;
 
-    [Header("Threshold")]
-    [SerializeField] private float threshold = 0.5f;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();

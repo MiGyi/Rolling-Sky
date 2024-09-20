@@ -15,7 +15,15 @@ public class PlayingState : BaseState
 
     public override void Update()
     {
-        mapGenerator.UpdateMap();
+        if (gameData.gameMode == 0) 
+        {
+            mapGenerator.UpdateEndless();
+        }
+        else
+        {
+            mapGenerator.UpdateMap();
+        }
+
         if (inputController.GetPauseButtonDown())
         {
             stateManager.ChangeState(stateManager.CreatePauseState());
