@@ -39,7 +39,7 @@ public class GameData {
     {
         get
         {
-            return PlayerPrefs.GetInt("choosingMapIndex", 0);
+            return PlayerPrefs.GetInt("choosingMapIndex", 1);
         }
         set
         {
@@ -51,7 +51,7 @@ public class GameData {
     {
         get
         {
-            return PlayerPrefs.GetInt("lastClearedMapIndex", 0);
+            return PlayerPrefs.GetInt("lastClearedMapIndex", 1);
         }
         set
         {

@@ -28,6 +28,7 @@ public class MapGenerator : MonoBehaviour
     private int rowsToSkip = 0;
     private int preventSpawnJumping = 0;
     private int preventSpawnObstacle = 0;
+    private bool rowToSpawnAtStart = true;
 
     public void InitMap()
     {
@@ -53,10 +54,7 @@ public class MapGenerator : MonoBehaviour
     {
         if (player.position.z + generationDistanceAhead > lastGeneratedZ)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                GenerateChunk();
-            }
+            GenerateChunk();
         }
 
         RemoveOldPlatforms();
@@ -188,6 +186,24 @@ public class MapGenerator : MonoBehaviour
         float platformWidth = GetPrefabWidth(platformPrefab);
 
         bool hasJumpingPlatform = false;
+
+        if (rowToSpawnAtStart) {
+            for (int i = 0; i < 6; ++i)
+            {
+                for (int lane = -5; lane <= 5; lane++)
+                {
+                    Vector3 lanePosition = spawnPosition + new Vector3(lane * platformWidth, -0.25f, 0);
+
+                    GameObject platform = Instantiate(platformPrefab, lanePosition, Quaternion.identity);
+                    platform.transform.parent = this.transform;
+                    activePlatforms.Add(platform);
+                }
+                spawnPosition += new Vector3(0, 0, platformLength);
+                lastGeneratedZ = spawnPosition.z;
+            }
+            rowToSpawnAtStart = false;
+            return;
+        }
 
         if (skipNextRows)
         {

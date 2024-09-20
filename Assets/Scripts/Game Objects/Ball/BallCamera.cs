@@ -45,7 +45,6 @@ public class BallCamera : MonoBehaviour
             transform.position = new Vector3(0, yPos, zPos) + offset + (shakeDuration > 0 ? Random.insideUnitSphere * shakeAmount : Vector3.zero);
             originalPos += new Vector3(0, 0, originalVelocity) * Time.deltaTime;
             originalVelocity -= reduceSpeed * Time.deltaTime;
-            Debug.Log(originalVelocity);
             shakeDuration -= Time.deltaTime;
         }
         else

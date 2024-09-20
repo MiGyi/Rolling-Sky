@@ -36,7 +36,6 @@ public class PlayingState : BaseState
         
         if (ball.IsFalling())
         {
-            Debug.Log("Ball is falling");
             stateManager.ChangeState(stateManager.CreateLoseState());
         }
     }

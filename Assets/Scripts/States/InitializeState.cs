@@ -7,7 +7,10 @@ public class InitializeState : BaseState
     {
         // Initialize the game
         gameData.Reset();
-        mapGenerator.InitMap();
+        if (gameData.gameMode == 1)
+        {
+            mapGenerator.InitMap();
+        }
         // delay 2 seconds before starting the game
         stateManager.StartCoroutine(StartGame());
     }

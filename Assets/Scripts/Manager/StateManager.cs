@@ -21,7 +21,6 @@ public class StateManager : MonoBehaviour
 
     public void ChangeState(BaseState newState)
     {
-        Debug.Log("Changing state from " + currentState + " to " + newState);
         currentState = newState;
         stateStack.Push(currentState);
     }

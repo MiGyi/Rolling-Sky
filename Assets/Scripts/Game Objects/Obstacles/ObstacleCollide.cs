@@ -23,7 +23,6 @@ public class ObstacleCollide : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player") //collide w player
             {
-                Debug.Log("Colld");
                 EventManager.Instance.TriggerGameOverEvent();
             }
         }
