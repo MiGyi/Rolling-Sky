@@ -11,8 +11,10 @@ public class Ball : MonoBehaviour
     // Header for the serialized fields
     [Header("Ball Movement")]
     [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float maxSpeed = 15.0f; 
     [SerializeField] private float deltaSpeed = 0.05f;
     [SerializeField] private float jumpingForce = 5.0f;
+    [SerializeField] private float minimumJumpingForce = 5.0f;
 
     [SerializeField] private float initialJumpingForce = 5.0f;
     [SerializeField] private ParticleSystem explosionEffect;
@@ -69,7 +71,15 @@ public class Ball : MonoBehaviour
         Vector3 velocity = rb.velocity;
         velocity.z = speed;
         rb.velocity = velocity;
-        speed += Time.deltaTime * deltaSpeed;
+
+        // Update speed
+        UpdateSpeed();
+    }
+
+    private void UpdateSpeed()
+    {
+        if (speed < maxSpeed) speed += Time.deltaTime * deltaSpeed;
+        if (jumpingForce > minimumJumpingForce ) jumpingForce -= Time.deltaTime * deltaSpeed / 4.0f;
     }
 
     public void StartGravity()

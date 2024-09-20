@@ -17,6 +17,7 @@ public class LoseState : BaseState
     {
         yield return new WaitForSeconds(3f);
         uiManager.OpenLoseScreen();
+        uiManager.loseScreen.GetComponent<LoseScreen>().UpdateScore();
     }
 
     public override void Update()

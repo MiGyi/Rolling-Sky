@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 
 public class GameData {
-    public int _score = 0;
     
     // 1: casual, 0: endless
     public int gameMode
@@ -19,11 +18,13 @@ public class GameData {
     public int score {
         get {
             // return value without PlayerPrefs
-            return _score;
+            return PlayerPrefs.GetInt("score", 0);
         }
         set {
-            _score = value;
-            highScore = Mathf.Max(value, highScore);
+            PlayerPrefs.SetInt("score", value);
+            if( gameMode == 0 ) {
+                highScore = (int)(Mathf.Max(value, highScore));
+            }
         }
     }
     public int highScore {
