@@ -9,22 +9,22 @@ public class PauseScreen : MonoBehaviour
     public void Resume()
     {
         EventManager.Instance.TriggerGameResumeEvent();
+
     }
 
     public void Restart()
     {
-
+        EventManager.Instance.TriggerGameRestartEvent();
     }
 
     public void Settings()
     {
-
+        
     }
 
     public void Exit() //bug
     {
         SceneManager.LoadScene("MainMenu");
-        SceneManager.UnloadScene(SceneManager.GetActiveScene().buildIndex); 
     }
 
     public void Sound()
